@@ -1,0 +1,6 @@
+{
+    "require": {
+        "codeception/codeception": "@dev",
+        "namshi/notificator": "1.0.*"
+    }
+}
