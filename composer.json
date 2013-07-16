@@ -1,5 +1,5 @@
 {
-    "name":"Codeception/Notifier",
+    "name":"codeception/notifier",
     "description":"Notification Extension for Codeception",
     "keywords":["notification", "acceptance testing", "functional testing", "unit testing", "tdd"],
     "homepage":"http://codeception.com/",
