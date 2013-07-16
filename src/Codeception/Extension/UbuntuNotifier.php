@@ -19,11 +19,7 @@ class UbuntuNotifier extends \Codeception\Platform\Extension {
         $manager = new Manager();
         $manager->addHandler(new NotifySendHandler());
 
-        if ($failed) {      
-          $notification = new NotifySendNotification("Codeception Tests FAILED");
-        } else {
-          $notification = new NotifySendNotification("Codeception Tests PASSED");
-        }
+        $notification = new NotifySendNotification("Codeception Tests " .($failed ? "FAILED" : "PASSED"));
 
         $manager->trigger($notification);
 
