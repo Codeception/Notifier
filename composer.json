@@ -1,6 +1,13 @@
 {
     "require": {
-        "codeception/codeception": "@dev",
         "namshi/notificator": "1.0.*"
-    }
+    },
+    "require-dev": {
+        "codeception/codeception": "@dev"
+    },
+    "autoload":{
+        "psr-0":{
+            "Codeception":"src"
+        }
+    }    
 }
