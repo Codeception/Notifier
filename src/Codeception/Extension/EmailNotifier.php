@@ -40,14 +40,12 @@ class EmailNotifier extends \Codeception\Platform\Extension {
     $result = $event->getResult();
     $failed = $result->failureCount() or $result->errorCount();
 
-    $config = \Codeception\Configuration::config();
-    if (!isset($config['EmailNotifier'])) throw new \Exception('EmailNotifier is not configured');
-    if (!isset($config['EmailNotifier']['email'])) throw new \Exception('EmailNotifier has no email option set');
+    // print_r($this->config);
+    if (!isset($this->config['email'])) 
+      throw new \Codeception\Exception\Extension(__CLASS__, 'email option is required');
+    $email = $this->config['email'];
 
     $status = $failed ? 'FAILED' : 'PASSED';
-
-    $email = $config['EmailNotifier']['email'];
-
     $print = $event->getPrinter()->printResult($result);
 
     // create the manager and assign the handler to it

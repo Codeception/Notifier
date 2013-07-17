@@ -28,9 +28,8 @@ paths:
     helpers: tests/_helpers
 extensions:
   - Codeception\Extension\UbuntuNotifier # extension class name
-  - Codeception\Extension\EmailNotifier
-EmailNotifier:
-  address: tests@company.com  
+  - Codeception\Extension\EmailNotifier:
+      address: tests@company.com  
 
 ```
 
@@ -49,9 +48,9 @@ Unlike Ubuntu Notification this extension also takes extra parameter from config
 
 ``` yaml
 
-extensions: [EmailNotifier]
-EmailNotifier: 
-  address: tests@company.com
+extensions:
+  - Codeception\Extension\EmailNotifier:
+      address: tests@company.com  
 
 ```
 
