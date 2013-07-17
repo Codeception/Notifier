@@ -27,9 +27,12 @@ paths:
     data: tests/_data
     helpers: tests/_helpers
 extensions:
-  - Codeception\Extension\UbuntuNotifier # extension class name
-  - Codeception\Extension\EmailNotifier:
-      address: tests@company.com  
+    enabled:
+      - Codeception\Extension\UbuntuNotifier # extension class name
+      - Codeception\Extension\EmailNotifier
+    config:
+      Codeception\Extension\EmailNotifier: # per extension config
+          email: tests@company.com
 
 ```
 
