@@ -41,7 +41,7 @@ extensions:
 Class: **Codeception\Extension\UbuntuNotifier**.
 
 A basic `notify-send` wrapper of Notificator can be used to send notifications in Ubuntu.
-Done via notificator's NotifySend hendler.
+Done via notificator's NotifySend handler.
 
 ## Email Notification
 
