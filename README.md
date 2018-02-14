@@ -6,17 +6,21 @@ Check it's source code to write your own extensions.
 
 ## Notification Extensions for Codeception
 
-Extensions from this package that can be included in Codeception >= 1.6.4 to receive notification of test results.
+Extensions from this package that can be included in Codeception to receive notification of test results.
+
 **This notifications are limited to just a few basic examples. It is recommended to get it forked and patched for your actual needs.**
 
 Notifcation are made via [notificatior](https://github.com/namshi/notificator) library by [NAMSHI](https://github.com/namshi/).
 
 ## Installation
 
-1. Install [Codeception](http://codeception.com) via Composer
-2. Add  `codeception/notifier: "*"` to your `composer.json`
-3. Run `composer install`.
-4. Include extensions into `codeception.yml` configuration:
+Install this package
+
+```
+composer require codeception/notifier --dev
+```
+
+Enable extensions in `codeception.yml` configuration:
 
 Sample:
 
@@ -28,10 +32,11 @@ paths:
     helpers: tests/_helpers
 extensions:
     enabled:
+      # enable ubuntu notifications
       - Codeception\Extension\UbuntuNotifier # extension class name
-      - Codeception\Extension\EmailNotifier
-    config:
-      Codeception\Extension\EmailNotifier: # per extension config
+      
+      # enable email notifications
+      - Codeception\Extension\EmailNotifier:
           email: tests@company.com
 
 ```
@@ -42,6 +47,12 @@ Class: **Codeception\Extension\UbuntuNotifier**.
 
 A basic `notify-send` wrapper of Notificator can be used to send notifications in Ubuntu.
 Done via notificator's NotifySend handler.
+
+Can be dynamically started (without adding to config) by providing `--ext UbuntuNotifier` option:
+
+```
+./vendor/bin/codecept run --ext UbuntuNotifier
+```
 
 ## Email Notification
 
