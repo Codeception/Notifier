@@ -1,6 +1,5 @@
 <?php
 namespace Codeception\Extension;
-require_once __DIR__.'/../../../vendor/autoload.php';
 
 use Namshi\Notificator\Notification\Handler\Email as EmailHandler;
 use Namshi\Notificator\Manager;
