@@ -1,11 +1,10 @@
 <?php
 namespace Codeception\Extension;
 
-require_once __DIR__.'/../../../vendor/autoload.php';
-
 use Namshi\Notificator\Notification\Handler\NotifySend as NotifySendHandler;
 use Namshi\Notificator\Manager;
 use Namshi\Notificator\Notification\NotifySend\NotifySendNotification;
+use Symfony\Component\Process\ExecutableFinder;
 
 class UbuntuNotifier extends \Codeception\Platform\Extension {
 
@@ -17,7 +16,7 @@ class UbuntuNotifier extends \Codeception\Platform\Extension {
         $failed = $result->failureCount() or $result->errorCount();
 
         $manager = new Manager();
-        $manager->addHandler(new NotifySendHandler());
+        $manager->addHandler(new NotifySendHandler(new ExecutableFinder()));
 
         $notification = new NotifySendNotification("Codeception Tests " .($failed ? "FAILED" : "PASSED"));
 
