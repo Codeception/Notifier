@@ -13,15 +13,35 @@ class UbuntuNotifier extends \Codeception\Platform\Extension {
     function notify($event)
     {
         $result = $event->getResult();
-        $failed = $result->failureCount() or $result->errorCount();
 
         $manager = new Manager();
         $manager->addHandler(new NotifySendHandler(new ExecutableFinder()));
 
-        $notification = new NotifySendNotification("Codeception Tests " .($failed ? "FAILED" : "PASSED"));
+        $icon = '/usr/share/icons/gnome/48x48/emotes/';
+        if ($result->errorCount() > 0) {
+            $icon .= 'face-angry';
+        } else if ($result->failureCount() > 0 ) {
+            $icon .= 'face-sad';
+        } else {
+            $icon .= 'face-cool';
+        }
+        $icon .= '.png';
+
+        $notification = new NotifySendNotification(
+            "\"Codeception Tests results: ".
+            $result->count(). " test where ".
+            $result->failureCount()." failed, ".
+            $result->errorCount()." errors, ".
+            $result->skippedCount()." skyped, ".
+            $result->notImplementedCount()." not implemented.\"",
+            [
+                '--urgency' => 'low',
+                '--category' => 'testing',
+                '--icon' => $icon
+            ]
+        );
 
         $manager->trigger($notification);
-
     }
 
 }
